@@ -1,0 +1,17 @@
+[package]
+name = "artc"
+version = "0.1.0"
+authors = ["sisbell <shane.isbell@gmail.com>"]
+
+[dependencies]
+clap = "2.32.0"
+cstr-argument = "0.1.0"
+digest = { version = "0.7", features = ["std"]}
+flate2 = "1.0.2"
+gpgme = "0.8.0"
+reqwest = "0.8.8"
+sha2 = "0.7"
+tar = "0.4.16"
+
+[profile.release]
+lto = true
