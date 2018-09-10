@@ -57,7 +57,7 @@ pub fn default_maven_repo_dir() -> PathBuf {
 }
 
 pub fn download_artifact(url: &str, file_path: &Path) -> Result<usize, Error> {
-    fs::create_dir_all(file_path.parent().unwrap());
+    fs::create_dir_all(file_path.parent().unwrap())?;
     save(file_path, download_content(url)?.as_slice())
 }
 
@@ -136,7 +136,7 @@ pub fn open_file(path: &PathBuf, filename: &str) -> Result<File, Error> {
 pub fn read_file_to_string(file: &Path) -> Result<String, Error> {
     let mut file = File::open(file)?;
     let mut contents = String::new();
-    file.read_to_string(&mut contents);
+    file.read_to_string(&mut contents)?;
     Ok(contents)
 }
 

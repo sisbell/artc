@@ -182,7 +182,7 @@ impl<'a> Artifact<'a> for ArtifactSha<'a> {
     fn download(&self) -> Result<usize, Error> {
         let content = download_content(self.url)?;
         if content.len() == 64 {
-            fs::create_dir_all(self.file_path.parent().unwrap());
+            fs::create_dir_all(self.file_path.parent().unwrap())?;
             return save(self.file_path, content.as_slice());
         }
         Err(Error::new(
