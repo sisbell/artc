@@ -4,6 +4,8 @@ version = "0.1.0"
 authors = ["sisbell <shane.isbell@gmail.com>"]
 repository = "https://github.com/sisbell/artc"
 readme = "README.md"
+description="A program for downloading artifacts and verifying the sha hashes and pgp signatures"
+license="Apache-2.0"
 
 [dependencies]
 clap = "2.32.0"
