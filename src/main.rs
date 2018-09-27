@@ -35,6 +35,7 @@ use flate2::Compression;
 use gpgme::Context as GpgContext;
 use gpgme::Protocol;
 use tar::Builder;
+use tar::HeaderMode;
 
 fn main() -> Result<(), Error> {
     let artc_dir = default_artc_dir();
@@ -207,6 +208,8 @@ fn main() -> Result<(), Error> {
             let tar_gz = File::create(&archive_path).unwrap();
             let enc = GzEncoder::new(&tar_gz, Compression::default());
             let mut tar = Builder::new(enc);
+            tar.mode(HeaderMode::Deterministic);
+
             tar.append_dir_all("m2", default_maven_repo_dir())?;
             println!(
                 "Created archive {} with hash: {}",
